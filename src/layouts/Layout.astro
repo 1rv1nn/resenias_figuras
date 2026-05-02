@@ -1,23 +1,38 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import '../styles/global.css';
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | Marvel Legends Blog</title>
+  </head>
+  <body class="bg-gray-950 text-white min-h-screen">
+
+    <nav class="bg-gray-900 border-b border-red-700 px-6 py-4">
+      <div class="max-w-5xl mx-auto flex justify-between items-center">
+        <a href="/" class="text-red-500 font-bold text-xl tracking-wide">
+          ⚡ Marvel Legends Blog
+        </a>
+        <div class="flex gap-6 text-sm text-gray-300">
+          <a href="/" class="hover:text-red-400 transition">Inicio</a>
+          <a href="/resenas" class="hover:text-red-400 transition">Reseñas</a>
+          <a href="/acerca" class="hover:text-red-400 transition">Acerca</a>
+        </div>
+      </div>
+    </nav>
+
+    <main class="max-w-5xl mx-auto px-6 py-10">
+      <slot />
+    </main>
+
+    <footer class="text-center text-gray-600 text-sm py-6 border-t border-gray-800">
+      © 2025 Marvel Legends Blog — Hecho con Astro
+    </footer>
+
+  </body>
+</html>

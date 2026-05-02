@@ -1,0 +1,41 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const resenas = await getCollection('resenas');
+  return resenas.map((resena) => ({
+    params: { slug: resena.id },
+    props: { resena },
+  }));
+}
+
+const { resena } = Astro.props;
+const { Content } = await render(resena);
+---
+
+<Layout title={resena.data.titulo}>
+
+  <div class="mb-8">
+    <span class="text-xs text-red-400 uppercase tracking-widest">{resena.data.serie}</span>
+    <h1 class="text-4xl font-bold text-white mt-2 mb-3">{resena.data.figura}</h1>
+    <p class="text-gray-400">{resena.data.descripcion}</p>
+    <div class="flex items-center gap-4 mt-4">
+      <span class="bg-yellow-400 text-black font-bold px-4 py-1 rounded-full text-lg">
+        {resena.data.puntuacion}/10
+      </span>
+      <span class="text-gray-500 text-sm">
+        {resena.data.fecha.toLocaleDateString('es-MX', { year: 'numeric', month: 'long', day: 'numeric' })}
+      </span>
+    </div>
+  </div>
+
+  <article class="prose prose-invert prose-red max-w-none">
+    <Content />
+  </article>
+
+  <a href="/resenas" class="inline-block mt-10 text-red-400 hover:text-red-300 transition">
+    ← Volver a reseñas
+  </a>
+
+</Layout>
