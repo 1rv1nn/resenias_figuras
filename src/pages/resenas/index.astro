@@ -1,30 +1,24 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getCollection } from 'astro:content';
-
-const resenas = await getCollection('resenas');
-resenas.sort((a, b) => b.data.fecha.getTime() - a.data.fecha.getTime());
+import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Reseñas">
+<Layout title="Inicio">
 
-  <h1 class="text-4xl font-bold text-red-500 mb-2">Reseñas</h1>
-  <p class="text-gray-400 mb-10">Todas las figuras analizadas al detalle.</p>
+  <section class="text-center py-16">
+    <h1 class="text-5xl font-bold text-red-500 mb-4">Marvel Legends Blog</h1>
+    <p class="text-gray-400 text-lg max-w-xl mx-auto">
+      Reseñas detalladas de figuras coleccionables. Articulación, pintura, accesorios y más.
+    </p>
+    <a href="/resenias_figuras/resenas" class="inline-block mt-8 bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-3 rounded-lg transition">
+      Ver reseñas
+    </a>
+  </section>
 
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-    {resenas.map((resena) => (
-      <a href={`/resenas/${resena.id}`} class="bg-gray-900 border border-gray-800 hover:border-red-600 rounded-xl p-6 transition group">
-        <div class="flex justify-between items-start mb-3">
-          <span class="text-xs text-gray-500 uppercase tracking-wider">{resena.data.serie}</span>
-          <span class="text-yellow-400 font-bold text-lg">{resena.data.puntuacion}/10</span>
-        </div>
-        <h2 class="text-xl font-bold text-white group-hover:text-red-400 transition mb-2">
-          {resena.data.figura}
-        </h2>
-        <p class="text-gray-400 text-sm">{resena.data.descripcion}</p>
-        <p class="text-red-500 text-sm mt-4 font-medium">Leer reseña →</p>
-      </a>
-    ))}
-  </div>
+  <section>
+    <h2 class="text-2xl font-bold text-white mb-6 border-b border-gray-800 pb-2">
+      Últimas reseñas
+    </h2>
+    <p class="text-gray-500">Próximamente las primeras reseñas...</p>
+  </section>
 
 </Layout>
