@@ -4,7 +4,9 @@ figura: "Pizza Spidey"
 serie: "Marvel Legends"
 puntuacion: 9
 fecha: 2025-01-15
-imagen: "/imagenes/spider-man.jpg"
+imagen: "/resenias_figuras/images/mx_spiderman/mx_spiderman_1.png"
+imagenAncho: 420
+imagenAlto: 560
 descripcion: "Una figura increíble con gran articulación y accesorios únicos."
 ---
 

@@ -11,15 +11,15 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title} | Marvel Legends Blog</title>
   </head>
-  <body class="bg-gray-950 text-white min-h-screen">
+  <body class="bg-white text-black min-h-screen">
 
-    <nav class="bg-gray-900 border-b border-red-700 px-6 py-4">
+    <nav class="bg-white border-b border-red-200 px-6 py-4">
       <div class="max-w-5xl mx-auto flex justify-between items-center">
         <a href="/" class="text-red-500 font-bold text-xl tracking-wide">
-          ⚡ Marvel Legends Blog
+         Marvel Legends Blog
         </a>
-        <div class="flex gap-6 text-sm text-gray-300">
-          <a href="/" class="hover:text-red-400 transition">Inicio</a>
+        <div class="flex gap-6 text-sm text-black/70">
+          <a href="./" class="hover:text-red-400 transition">Inicio</a>
           <a href="/resenas" class="hover:text-red-400 transition">Reseñas</a>
           <a href="/acerca" class="hover:text-red-400 transition">Acerca</a>
         </div>
@@ -30,7 +30,7 @@ const { title } = Astro.props;
       <slot />
     </main>
 
-    <footer class="text-center text-gray-600 text-sm py-6 border-t border-gray-800">
+    <footer class="text-center text-black/60 text-sm py-6 border-t border-red-100">
       © 2025 Marvel Legends Blog — Hecho con Astro
     </footer>
 

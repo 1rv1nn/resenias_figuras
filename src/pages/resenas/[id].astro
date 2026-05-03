@@ -1,0 +1,45 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, render } from 'astro:content';
+
+export async function getStaticPaths() {
+  const resenas = await getCollection('resenas');
+  return resenas.map((resena) => ({
+    params: { id: resena.id },
+    props: { resena },
+  }));
+}
+
+const { resena } = Astro.props;
+const { Content } = await render(resena);
+---
+
+<Layout title={resena.data.titulo}>
+  <div class="mb-8 text-black">
+    <span class="text-xs text-red-500 uppercase tracking-widest">{resena.data.serie}</span>
+    <h1 class="text-4xl font-bold text-black mt-2 mb-3">{resena.data.figura}</h1>
+    <p class="text-gray-700">{resena.data.descripcion}</p>
+    {resena.data.imagen && (
+      <img
+        src={resena.data.imagen}
+        alt={resena.data.figura}
+        width={resena.data.imagenAncho ?? 420}
+        height={resena.data.imagenAlto ?? 560}
+        style={`width: ${resena.data.imagenAncho ?? 420}px; height: ${resena.data.imagenAlto ?? 560}px;`}
+        class="mt-6 mb-6 rounded-2xl border border-gray-200 shadow-lg object-contain bg-white mx-auto"
+      />
+    )}
+    <div class="flex items-center gap-4 mt-4">
+      <span class="bg-yellow-400 text-black font-bold px-4 py-1 rounded-full text-lg">
+        {resena.data.puntuacion}/10
+      </span>
+    </div>
+  </div>
+  <article class="prose prose-slate max-w-none prose-headings:text-black prose-p:text-black prose-li:text-black">
+    <Content />
+  </article>
+  <a href="/resenas" class="inline-block mt-10 text-red-500 hover:text-red-400 transition">
+    ← Volver a reseñas
+  </a>
+</Layout>
+

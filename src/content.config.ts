@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
 const resenas = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: 'src/content/resenas' }),
+  loader: glob({ pattern: '**/*.md', base: './src/content/resenas' }),
   schema: z.object({
     titulo: z.string(),
     figura: z.string(),
@@ -10,6 +10,8 @@ const resenas = defineCollection({
     puntuacion: z.number().min(1).max(10),
     fecha: z.date(),
     imagen: z.string().optional(),
+    imagenAncho: z.number().int().positive().optional(),
+    imagenAlto: z.number().int().positive().optional(),
     descripcion: z.string(),
   }),
 });
